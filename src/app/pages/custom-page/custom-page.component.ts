@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-basic-page',
+  selector: 'app-custom-page',
   imports: [],
-  templateUrl: './basic-page.component.html',
+  templateUrl: './custom-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BasicPageComponent { }
+export default class CustomPageComponent { }
