@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CardComponent } from '../../components/card.component.ts/card.component.ts.component';
-import { I18nSelectPipe } from '@angular/common';
+import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
 
 const client1 ={
   name: 'Mauricio',
@@ -20,7 +20,7 @@ const client2 ={
 
 @Component({
   selector: 'app-uncommon-page',
-  imports: [ CardComponent, I18nSelectPipe ],
+  imports: [ CardComponent, I18nSelectPipe, I18nPluralPipe ],
   templateUrl: './uncommon-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -43,6 +43,34 @@ export default class UncommonPageComponent {
     this.client.set(client1);
 
   }
+
+
+    // i18n plural
+    ClientsMap = signal({
+      '=0': 'no tenenmos ningun cliente esperando',
+      '=1': 'tenenmos un cliente esperando',
+      '=2': 'tenenmos 2 clientes esperando',
+      other: 'tenenmos # clientes esperando',
+      
+    });
+
+
+    clients = signal([
+      'Marco',
+      'Felipe',
+      'Pedro',
+      'Nicolas',
+      'Matias',
+      'Carlos',
+      'Jose',
+      'Bruno',
+      'Mello',
+    ]);
+
+      deleteClient(){ 
+        this.clients.update( (prev ) => prev.slice(1) );
+      }
+
  }
 
 
