@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CardComponent } from '../../components/card.component.ts/card.component.ts.component';
-import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
+import { I18nPluralPipe, I18nSelectPipe, SlicePipe } from '@angular/common';
 
 const client1 ={
   name: 'Mauricio',
@@ -20,7 +20,8 @@ const client2 ={
 
 @Component({
   selector: 'app-uncommon-page',
-  imports: [ CardComponent, I18nSelectPipe, I18nPluralPipe ],
+  standalone: true,
+  imports: [ CardComponent, I18nSelectPipe, I18nPluralPipe, SlicePipe ],
   templateUrl: './uncommon-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
