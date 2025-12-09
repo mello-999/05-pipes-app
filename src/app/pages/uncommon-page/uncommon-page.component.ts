@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CardComponent } from '../../components/card.component.ts/card.component.ts.component';
-import { I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 const client1 ={
   name: 'Mauricio',
@@ -28,7 +28,8 @@ const client2 ={
         JsonPipe,
          UpperCasePipe,
         KeyValuePipe,
-      TitleCasePipe 
+      TitleCasePipe,
+      AsyncPipe
     ],
   templateUrl: './uncommon-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,7 +37,7 @@ const client2 ={
 export default class UncommonPageComponent {
   //  i18n Select
   client = signal(client1);
-  
+
  invitationMap = {
   male: 'invitarlo',
   female: 'invitarla',
@@ -60,7 +61,7 @@ export default class UncommonPageComponent {
       '=1': 'tenenmos un cliente esperando',
       '=2': 'tenenmos 2 clientes esperando',
       other: 'tenenmos # clientes esperando',
-      
+
     });
 
 
@@ -76,16 +77,27 @@ export default class UncommonPageComponent {
       'Mello',
     ]);
 
-      deleteClient(){ 
+      deleteClient(){
         this.clients.update( (prev ) => prev.slice(1) );
       }
-        
+
       // keyValue Pipe
       profile = {
         name: 'Mauricio',
         age: 36,
         address: 'Ottawa, Canada',
       };
+
+      // Async Pipe
+    promiseValue: Promise<string> = new Promise((resolve, reject) => {
+       setTimeout(() => {
+       resolve('Tenemos data en la promesa.')
+       console.log('Promesa finalizada');
+      }, 3500);
+
+}) 
+
+
  }
 
 
