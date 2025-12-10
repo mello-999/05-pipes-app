@@ -71,11 +71,23 @@
           <p>{{ promiseValue | async }}</p>
 
           @if( promiseValue | async; as value ) {
-        } @else {
-            <p class="text-accent">Espere por favor...</p>
-
         }
+        <!--  -->
+         @else {
+            <p class="text-accent">Espere por favor...</p>
+        }
+        <!--  -->
+         <h3 class="text-2xl">Observable</h3>
+         <p>{{myObservableTimer | async }}</p>
 
+         @if( myObservableTimer | async; as value ) {
+            <p>Valor: {{ value }}</p>
+
+         }
+        <!--  -->
+        @else{
+            <p>Esperando primer valor</p>
+         }
 
     </app-card>
 
