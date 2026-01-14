@@ -63,10 +63,21 @@
             {{ hero.name }}
           </td>
           <td>
-            {{ hero.canFly }}
+            <span
+            class="text-xs w-44"
+            [class.text-success]="hero.canFly"
+            [class.text-accent]="!hero.canFly"
+            >
+              {{ hero.canFly | canFly }}
+
+            </span>
           </td>
           <td>
-            {{ hero.color }}
+            <span class="text-xs w-44"
+            [style.color]="hero.color | heroColor">
+              {{ hero.color | heroColor:'name'  }}
+
+            </span>
           </td>
           <td>
             {{ hero.creator }}
