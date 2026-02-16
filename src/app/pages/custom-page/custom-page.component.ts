@@ -8,6 +8,7 @@ import { TitleCasePipe } from '@angular/common';
 import { HeroCreatorPipe } from '../../pipes/hero-creator.pipe';
 import { HeroSortByPipe } from '../../pipes/hero-sort-by.pipe';
 import { Hero } from '../../interfaces/hero.interfaces';
+import { HerofilterPipe, } from '../../pipes/hero-filter.pipe';
 
 
 @Component({
@@ -20,7 +21,8 @@ import { Hero } from '../../interfaces/hero.interfaces';
     HeroTextColorPipe,
     TitleCasePipe,
     HeroCreatorPipe,
-    HeroSortByPipe
+    HeroSortByPipe,
+    HerofilterPipe
 
   ],
   templateUrl: './custom-page.component.html',
@@ -34,9 +36,11 @@ toggleUpperCase() {
   this.upperCase.update(v => !v); // invierte true ↔ false
 }
 
-heroes = signal(heroes)
+   heroes = signal(heroes);
 
-sortBy = signal<keyof Hero | null>(null)
+   sortBy = signal<keyof Hero | null>(null);
+
+   searchQuery = signal('');
 
 }
 
